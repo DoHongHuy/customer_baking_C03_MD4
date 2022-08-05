@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <!-- App css -->
+    <link href="/bakingCustomer/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/bakingCustomer/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/bakingCustomer/assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <link href="/bakingCustomer/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+
+
+
+</head>
+<style>
+    #menuCustomer{
+        background-color: #1f4a70;
+        color: aliceblue;
+        height: 76px;
+        width: 1337px;
+    }
+
+
+</style>
+<body>
+<div class="container text-center" style="margin-left: 93px; ">
+    <div>
+        <div class="row" id="menuCustomer">
+            <div class="col"  style="font-size: 49px;">
+                List of customers
+            </div>
+            <div style="margin-top: 33px;" >
+                <a href="http://localhost:8080/history">
+                    <button type="button" class="btn btn-outline-primary">
+                        Transfer money Information
+                    </button>
+                </a>
+                <a href="/customers/create">
+                    <button type="button" class="btn btn-outline-primary">
+                        Add new customer
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="width: 1337px;">
+        <table class="table table-hover" style="font-size: 12px;">
+            <thead style="background-color: #669aff; ">
+            <tr class="theadTable">
+                <th>#</th>
+                <th style="width: 240px;">FullName</th>
+                <th style="width: 200px;">Email</th>
+                <th style="width: 200px;">Phone</th>
+                <th style="width: 220px;">Address</th>
+                <th style="width: 120px;">Balance</th>
+                <th colspan="5">Action</th>
+            </tr>
+            </thead>
+            <c:forEach items="${requestScope['customerList']}" var="item">
+                <tr style="color: #0b0b0b">
+                    <td>${item.getId()}</td>
+                    <td>${item.getFull_name()}</td>
+                    <td>${item.getEmail()}</td>
+                    <td>${item.getPhone()}</td>
+                    <td>${item.getAddress()}</td>
+                    <td style="text-align: right">${item.getBalance()}</td>
+
+                    <td >
+                        <a href="/customers/edit">
+                            <button type="button" class="btn btn-outline-info">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/customers/deposit" >
+                            <button type="button" class="btn btn-outline-success">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/customers/withdraw">
+                            <button type="button" class="btn btn-outline-success">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/customers/transfer">
+                            <button type="button" class="btn btn-outline-warning">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/customers/suspended">
+                            <button type="button" class="btn btn-outline-dark">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
